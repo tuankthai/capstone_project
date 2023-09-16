@@ -8,21 +8,24 @@ import PurchaseItemBox from './PurchaseItemBox'
 
 
 export default function Cart() {
-    const [qty, setQty] = useState(0)
-    const [product, setProduct] = useState({})
+    // const [qty, setQty] = useState(0)
+    // const [product, setProduct] = useState({})
     const { productId } = useParams();
     const [error, setError] = useState(null)
     const [errormsg, setErrormsg] = useState(null)
+    const [bagTotal, setBagTotal] = useState(0)
     const navigate = useNavigate();
 
-    let bagTotalPrice = 500;
+    // let bagTotalPrice = 500;
 
     console.log("Cart: useParams producId: ", productId);
     const item = JSON.parse(localStorage.getItem("item_bought"));
     console.log("item : ", item)
 
-    const [item_bought, setItem_bought] = useState(item)
-    console.log("item_bought: ", item_bought)
+    // const [item_bought, setItem_bought] = useState(item)
+    // console.log("item_bought: ", item_bought)
+    // let bagTotal = 0;
+
 
 
     //should retrieve the bag from local storage 
@@ -56,8 +59,9 @@ export default function Cart() {
             //use existing bag
             console.log("yes use existing non-user bag in local storgage");
             bag = JSON.parse(localStorage.getItem("shopping_bag"));
+            // console.log("before setBag: ", JSON.parse(localStorage.getItem("shopping_bag")) );
         }
-        console.log(bag)
+        console.log("bag?  ==", bag)
     } else {
         //logged in
         //token exist. get username bag from local storage username_bag
@@ -71,18 +75,21 @@ export default function Cart() {
     //if item exists in bag, update  item's qty and total
     //if not, attach item to array
     //update bag grandTotal, totalItems,
-    const item_found = bag.data.find((item) => { return item.id === item_bought.id });
+    const item_found = bag.data.find((itemxx) => { return itemxx.id === item.id });
     if (item_found == null) {
         console.log("item not found")
-        bag.data.push(item_bought);
+        // bag.data.push(item_bought);
+        bag.data.push(item);
     } else {
         console.log("yes item found = ", item_found)
         item_found.qty += 1;
         item_found.total += parseFloat(item_found.price);
 
     }
-    bag.grandTotal += parseFloat(item_bought.price);
+    bag.grandTotal += parseFloat(item.price);
     bag.totalItems += 1;
+    setBagTotal(prev=>prev+bag.grandTotal) 
+    // bagTotal += bag.grandTotal;
 
     console.log("bag latest update = ", bag)
 
@@ -95,7 +102,7 @@ export default function Cart() {
             <div className='column_flex'>
                 {bag.data.map((purchaseItem) => {
                     console.log("map purchase item : ", purchaseItem)
-                    return <PurchaseItemBox key={purchaseItem.id} purchaseItem={purchaseItem}
+                    return <PurchaseItemBox key={purchaseItem.id} purchaseItem={purchaseItem} setBagTotal={ setBagTotal }
                     />;
 
                 })}
@@ -117,7 +124,9 @@ export default function Cart() {
                         setItem_bought({
                             ...item_bought, qty: item_bought.qty - 1,
                             total: (item_bought.price * (item_bought.qty - 1))
+
                         })
+                        bagTotal -= item_bought.price;
                     }
                 }}>-</span>
                 &nbsp;
@@ -129,15 +138,16 @@ export default function Cart() {
                         ...item_bought, qty: item_bought.qty + 1,
                         total: (item_bought.price * (item_bought.qty + 1))
                     })
+                    bagTotal += item_bought.price;
                 }}>+</span>
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <h4> ${item_bought.total}</h4><br />
             </div> */}
-            
+
             {/* <hr /> */}
             <br />
-            <h4>TOTAL: ${bagTotalPrice}</h4>
+            <h4>TOTAL: ${bagTotal}</h4>
 
             <div className='row_flex'>
                 <button className='product-button' onClick={() => {

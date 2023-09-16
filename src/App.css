@@ -169,11 +169,29 @@ header {
 .row_flex {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-evenly; */
+  /* justify-content: space-between; */
 }
 
 .column_flex {
   display: flex;
   flex-direction: column;
   /* justify-content: space-evenly; */
+}
+
+.image_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.price_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.title_div {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-start; */
 }
