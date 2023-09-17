@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 
-import Nav from './Nav'
+// import Nav from './Nav'
 import ProductBox from './ProductBox'
 import DropDownMenu from './DropDownMenu'
 import FilterDropDownMenu from './FilterDropDownMenu'
@@ -18,6 +18,7 @@ export default function Home() {
     const [allproducts, setAllproducts] = useState([])
     const [displayProducts, setDisplayProducts] = useState([])
     const navigate = useNavigate();
+    console.log("in home page")
 
     useEffect(() => {
 
@@ -43,7 +44,7 @@ export default function Home() {
 
     return (
         <div>
-            <Nav />
+            {/* <Nav /> */}
 
             <div className='menuOption'>
                 <div className='alignFilterDropDown'>

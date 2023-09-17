@@ -1,98 +1,29 @@
 
 import { useParams, useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import '../App.css'
 import PurchaseItemBox from './PurchaseItemBox'
+import { ShopContext } from '../context/shop-context';
 
-
+// tips to do 2x decimal places
+// function financial(x) {
+//     return Number.parseFloat(x).toFixed(2);
+// }
+// console.log(financial(123.456));
+// Expected output: "123.46"
 
 export default function Cart() {
-    // const [qty, setQty] = useState(0)
-    // const [product, setProduct] = useState({})
-    const { productId } = useParams();
-    const [error, setError] = useState(null)
-    const [errormsg, setErrormsg] = useState(null)
-    const [bagTotal, setBagTotal] = useState(0)
+    // const { productId } = useParams();
+    const [error, setError] = useState(null);
+    const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
+    const { cartItems, cartTotal } = useContext(ShopContext);
+    
+    // let grandTotal = getCartTotal();
 
-    // let bagTotalPrice = 500;
-
-    console.log("Cart: useParams producId: ", productId);
-    const item = JSON.parse(localStorage.getItem("item_bought"));
-    console.log("item : ", item)
-
-    // const [item_bought, setItem_bought] = useState(item)
-    // console.log("item_bought: ", item_bought)
-    // let bagTotal = 0;
-
-
-
-    //should retrieve the bag from local storage 
-    //if token exists, retrieve user bag.  if not, retrieve non user bag
-    // update qty if product exists.
-    // if not, add object into array
-    //if no bag exists in local storage, make new bag and add object into array
-    //calculate total of all items in bag.
-    const shopping_bag =
-    {
-        username: "",
-        grandTotal: 0,
-        totalItems: 0,
-        shipping_address: "",
-        data: []
-    };
-    let bag = {};
-
-    const token = localStorage.getItem("token");
-    if (token === null) {
-        console.log("no, token does not exist. get current user bag or empty bag")
-        //not logged in
-        bag = localStorage.getItem("shopping_bag");
-        if (bag === null) {
-            console.log("no non-user bag in local storgage");
-            //use brand new shopping bag. save it in local storage
-            bag = shopping_bag;
-            //convert to json format before saving
-            localStorage.setItem("shopping_bag", JSON.stringify(bag));
-        } else {
-            //use existing bag
-            console.log("yes use existing non-user bag in local storgage");
-            bag = JSON.parse(localStorage.getItem("shopping_bag"));
-            // console.log("before setBag: ", JSON.parse(localStorage.getItem("shopping_bag")) );
-        }
-        console.log("bag?  ==", bag)
-    } else {
-        //logged in
-        //token exist. get username bag from local storage username_bag
-        console.log("yes, token exists. get user bag from local storage")
-        const username = localStorage.getItem("username");
-        //need to convert from JSON string to object before use
-        bag = JSON.parse(localStorage.getItem(`${username}_bag`));
-    }
-
-    //now put purchase item in bag.
-    //if item exists in bag, update  item's qty and total
-    //if not, attach item to array
-    //update bag grandTotal, totalItems,
-    const item_found = bag.data.find((itemxx) => { return itemxx.id === item.id });
-    if (item_found == null) {
-        console.log("item not found")
-        // bag.data.push(item_bought);
-        bag.data.push(item);
-    } else {
-        console.log("yes item found = ", item_found)
-        item_found.qty += 1;
-        item_found.total += parseFloat(item_found.price);
-
-    }
-    bag.grandTotal += parseFloat(item.price);
-    bag.totalItems += 1;
-    setBagTotal(prev=>prev+bag.grandTotal) 
-    // bagTotal += bag.grandTotal;
-
-    console.log("bag latest update = ", bag)
-
+    console.log("in cart, ", cartItems)
+    
     return (
 
         <div className='Cart'>
@@ -100,9 +31,9 @@ export default function Cart() {
             <hr />
             {/* loop through the array and display products and qty bought */}
             <div className='column_flex'>
-                {bag.data.map((purchaseItem) => {
-                    console.log("map purchase item : ", purchaseItem)
-                    return <PurchaseItemBox key={purchaseItem.id} purchaseItem={purchaseItem} setBagTotal={ setBagTotal }
+                {cartItems.map((itemY) => {
+                    console.log("map itemY : ", itemY)
+                    return <PurchaseItemBox key={itemY.id} itemY={itemY}
                     />;
 
                 })}
@@ -147,18 +78,15 @@ export default function Cart() {
 
             {/* <hr /> */}
             <br />
-            <h4>TOTAL: ${bagTotal}</h4>
+            <h4>TOTAL: ${cartTotal.toFixed(2)}</h4>
 
             <div className='row_flex'>
                 <button className='product-button' onClick={() => {
-                    localStorage.setItem("shopping_bag", JSON.stringify(bag));
-
                 }} >
                     Check Out</button>
+                
                 <button className='product-button' onClick={() => {
-                    //save shopping bag in local storage
-                    localStorage.setItem("shopping_bag", JSON.stringify(bag));
-
+                    // localStorage.setItem("shopping_bagData", JSON.stringify(bagData));
                     navigate(`/`)
 
                 }} >

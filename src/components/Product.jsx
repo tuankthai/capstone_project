@@ -1,9 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext} from "react";
 
 const BASE_URL = "https://fakestoreapi.com";
 import '../App.css'
 import Cart from './Cart'
+import { ShopContext } from '../context/shop-context';
+
 
 export default function Product() {
     const [product, setProduct] = useState({})
@@ -11,6 +13,7 @@ export default function Product() {
     const [error, setError] = useState(null)
     const [errormsg, setErrormsg] = useState(null)
     const navigate = useNavigate();
+    const { addToCart, purchaseItem, setPurchaseItem, cartItems } = useContext(ShopContext);
 
 
     console.log("useParams producId: ", productId);
@@ -59,23 +62,44 @@ export default function Product() {
                 <button className='product-button' onClick={
                     () => {
                         console.log("add to cart clicked");
-                        // //make obj of product they purchase. stringify and store in local storge
 
-                        localStorage.setItem("item_bought", JSON.stringify(
-                            {
-                                id: `${product.id}`,
-                                title: `${product.title}`,
-                                price: `${product.price}`,
-                                image: `${product.image}`,
+                        // setPurchaseItem(
+                        //     {
+                        //         id: product.id,
+                        //         title: product.title,
+                        //         price: product.price,
+                        //         image: product.image,
+                        //         qty: 1,
+                        //         total: parseFloat(product.price)
+                        //     }
+                        // );
+
+                         const getItem =   {
+                                id: product.id,
+                                title: product.title,
+                                price: product.price,
+                                image: product.image,
                                 qty: 1,
                                 total: parseFloat(product.price)
                             }
-                        ));
+                        
 
-                        navigate(`/Cart/${product.id}`)
+                        // navigate(`/Cart/${product.id}`)
+                        // console.log("before calling addToCart, purchaseItem : ", purchaseItem);
+                        console.log("before calling addToCart, getItem : ", getItem);
+                        addToCart(getItem);
+                        console.log("after calling addToCart, getItem : ", cartItems);
+
 
                     }}>
                     Add to Cart</button>
+
+                <button className='product-button' onClick={() => { navigate(`/Cart`) }}>
+                    View Cart</button>
+
+                <button className='product-button' onClick={() => { navigate(`/`) }} >
+                    Continue Shopping</button>
+
 
 
             </div>

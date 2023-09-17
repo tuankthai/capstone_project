@@ -1,70 +1,103 @@
 
 import React from "react";
 import '../App.css'
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ShopContext } from '../context/shop-context';
 
-export default function PurchaseItemBox({ purchaseItem, setBagTotal }) {
-// export default function PurchaseItemBox({ purchaseItem, bagTotal }) {
-    const [item_bought, setItem_bought] = useState(purchaseItem)
+export default function PurchaseItemBox({ itemY }) {
+    const [bagItem, setBagItem] = useState(itemY);
+    // const { incrementItems, decrementItems } = useContext(ShopContext);
+    const { removeFromCart, updateCart } = useContext(ShopContext);
 
-    console.log(" purchaseItem  id: ", purchaseItem.id)
-    console.log("item_bought  id: ", item_bought.id)
+    const decrementItems = () => {
+        setBagItem({
+            ...bagItem, qty: bagItem.qty - 1,
+            total: (bagItem.price * (bagItem.qty - 1))
+        })
+        updateCart(bagItem)
+
+        //if qty === 0 then remove item from bag and update state ... TO DO 
+        if (bagItem.qty === 0) {
+            removeFromCart(bagItem);
+
+        }
+    }
+
+    const incrementItems = () => {
+        setBagItem({
+            ...bagItem, qty: bagItem.qty + 1,
+            total: (bagItem.price * (bagItem.qty + 1))
+        })
+        updateCart(bagItem)
+
+    }
+
+
+    // setBagItem(itemInBag)
+    console.log(" after setBagItem, bagItem  id: ", bagItem.id)
 
     return (
 
+        //should use grid of five columns with specific column width for each column
         <div className='row_flex'>
             <div className="image_div">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src={item_bought.image} alt={""} width={100} height={100}></img><br />
+                <img src={bagItem.image} alt={""} width={100} height={100}></img><br />
             </div>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div className="title_div">
 
-                <h4>{item_bought.title}</h4><br />
+                <h4>{bagItem.title}</h4><br />
             </div>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div className="price_div">
 
-                <h4> ${item_bought.price}</h4><br />
+                <h4> ${bagItem.price}</h4><br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <div className="qty_div">
 
                 <span onClick={() => {
                     console.log("you click span minus")
-                    if (item_bought.qty >= 1) {
-                        setItem_bought({
-                            ...item_bought, qty: item_bought.qty - 1,
-                            total: (item_bought.price * (item_bought.qty - 1))
-                        })
-                        // bagTotal -= item_bought.price;
-                        // setBagTotal(prev => prev - item_bought.price)
-                        
+                    decrementItems(bagItem);
+                    console.log("after decrementItems, bagItem", bagItem)
 
-                    }
+                    // if (item_bought.qty >= 1) {
+                    //     setItem_bought({
+                    //         ...item_bought, qty: item_bought.qty - 1,
+                    //         total: (item_bought.price * (item_bought.qty - 1))
+                    //     })
+                    // }
 
                 }}>-</span>
                 &nbsp;
 
-                <h4> {item_bought.qty}</h4><br />
+                <h4> {bagItem.qty}</h4><br />
                 &nbsp;
 
                 <span onClick={() => {
                     console.log("you click span plus")
-                    setItem_bought({
-                        ...item_bought, qty: item_bought.qty + 1,
-                        total: (item_bought.price * (item_bought.qty + 1))
-                    })
-                    // bagTotal += item_bought.price;
-                    // setBagTotal(prev => prev + item_bought.price)
+                    incrementItems(bagItem);
+                    console.log("after incrementItems, bagItem", bagItem)
+
+                    // setItem_bought({
+                    //     ...item_bought, qty: item_bought.qty + 1,
+                    //     total: (item_bought.price * (item_bought.qty + 1))
+                    // })
 
                 }}>+</span>
                 <br />
+            </div>
+            <div className="subtotal_div">
+
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <h4> ${item_bought.total}</h4><br />
+                <h4> ${bagItem.total}</h4><br />
             </div>
 
-        </div>
+        </div >
 
     );
 }
