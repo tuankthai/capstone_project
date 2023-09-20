@@ -213,7 +213,7 @@ header {
   /* justify-content: flex-start; */
 }
 
-.navbar{
+.navbar {
   width: 100%;
   height: 80px;
   background-color: black;
@@ -233,4 +233,85 @@ header {
   color: white;
   margin-left: 20px;
   font-size: 25px;
+}
+
+.pre_checkout_div {
+  display: flex;
+  /* flex-direction: row;*/
+    flex-direction: column;
+}
+
+.header_div{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 5%;
+  align-items: center;
+}
+
+.guest_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-top: 10%;
+}
+
+.signin_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  width: 50%;
+}
+
+
+.login_page_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  margin-left: 20%;
+  width: 50%;
+}
+
+.botttom_div{
+  display: flex;
+  flex-direction: row;
+}
+
+.two_columns{
+  display: flex;
+  flex-direction: row;
+}
+
+.left_column{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 1em;
+}
+
+.right_column{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.label_text{
+  /* display: flex;
+  flex-direction: row; */
+  width: 50%;
+  margin-left: 0%;
+}
+
+.price_text{
+  width: 50%;
+  margin-left: 50%;
+}
+
+.list-all-categories{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

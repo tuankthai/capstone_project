@@ -4,9 +4,6 @@ import '../App.css'
 import { Link } from "react-router-dom";
 import Product from "./Product";
 
-// import { useNavigate } from "react-router-dom";
-// import { removePlayer } from "./delete.js"
-
 
 export default function ProductBox({ product }) {
 

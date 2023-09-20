@@ -3,7 +3,7 @@ import '../App.css'
 import { ShopContext } from '../context/shop-context';
 import { Link } from 'react-router-dom';
 
-export default function Nav() {
+export default function NavLogout() {
     return (
         <div className='navbar'>
             <div className='links'>
@@ -11,7 +11,7 @@ export default function Nav() {
 
                 <span id="logo">Macy's</span>
 
-                <Link to="/Login?src=navbar">Login</Link>
+                <Link to="/Logout">Logout</Link>
                 <Link to="/Cart">Cart</Link>
                 
             </div>

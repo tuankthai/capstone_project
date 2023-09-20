@@ -13,14 +13,15 @@ import { ShopContext } from '../context/shop-context';
 // console.log(financial(123.456));
 // Expected output: "123.46"
 
-export default function Cart() {
-    // const { productId } = useParams();
+export default function Cart() { 
+    
+    // const [orderTotal, setOrderTotal] = useState(0);
     const [error, setError] = useState(null);
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
-    const { cartItems, cartTotal } = useContext(ShopContext);
-    
-    // let grandTotal = getCartTotal();
+    const { cartItems, cartTotal, getCartTotal } = useContext(ShopContext);
+    const orderTotal  = getCartTotal();
+    // const orderTotal;
 
     console.log("in cart, ", cartItems)
     
@@ -39,49 +40,16 @@ export default function Cart() {
                 })}
             </div>
             <hr />
-
-            {/* <div className='row_flex'>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src={item_bought.image} alt={""} width={100} height={100}></img><br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <h4>{item_bought.title}</h4><br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <h4> ${item_bought.price}</h4><br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span onClick={() => {
-                    console.log("you click span minus")
-                    if (item_bought.qty >= 1) {
-                        setItem_bought({
-                            ...item_bought, qty: item_bought.qty - 1,
-                            total: (item_bought.price * (item_bought.qty - 1))
-
-                        })
-                        bagTotal -= item_bought.price;
-                    }
-                }}>-</span>
-                &nbsp;
-                <h4> {item_bought.qty}</h4><br />
-                &nbsp;
-                <span onClick={() => {
-                    console.log("you click span plus")
-                    setItem_bought({
-                        ...item_bought, qty: item_bought.qty + 1,
-                        total: (item_bought.price * (item_bought.qty + 1))
-                    })
-                    bagTotal += item_bought.price;
-                }}>+</span>
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <h4> ${item_bought.total}</h4><br />
-            </div> */}
-
+            
             {/* <hr /> */}
             <br />
-            <h4>TOTAL: ${cartTotal.toFixed(2)}</h4>
+            {/* <h4>TOTAL: ${cartTotal.toFixed(2)}</h4> */}
+            <h4>TOTAL: ${orderTotal.toFixed(2)}</h4>
 
             <div className='row_flex'>
                 <button className='product-button' onClick={() => {
+                    navigate(`/PreCheckout`)
+
                 }} >
                     Check Out</button>
                 

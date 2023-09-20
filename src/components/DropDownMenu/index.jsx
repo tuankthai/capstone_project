@@ -20,7 +20,7 @@ function DropDownMenu() {
             <Dropdown.Menu>
                 <Dropdown.Item onClick={(e)=>handleDropDown(e, "one")}>Price low to high</Dropdown.Item>
                 <Dropdown.Item onClick={(e)=>handleDropDown(e, "two")}>Price high to low</Dropdown.Item>
-                <Dropdown.Item onClick={(e) => handleDropDown(e, "three")}>Customer Ratings high to low</Dropdown.Item>
+                {/* <Dropdown.Item onClick={(e) => handleDropDown(e, "three")}>Customer Ratings high to low</Dropdown.Item> */}
             </Dropdown.Menu>
         </Dropdown>
     );

@@ -31,14 +31,13 @@ export default function PurchaseItemBox({ itemY }) {
         updateCart(bagItem)
 
     }
-
+ 
 
     // setBagItem(itemInBag)
     console.log(" after setBagItem, bagItem  id: ", bagItem.id)
 
     return (
 
-        //should use grid of five columns with specific column width for each column
         <div className='row_flex'>
             <div className="image_div">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -62,16 +61,9 @@ export default function PurchaseItemBox({ itemY }) {
 
                 <span onClick={() => {
                     console.log("you click span minus")
-                    decrementItems(bagItem);
+                    decrementItems();
                     console.log("after decrementItems, bagItem", bagItem)
-
-                    // if (item_bought.qty >= 1) {
-                    //     setItem_bought({
-                    //         ...item_bought, qty: item_bought.qty - 1,
-                    //         total: (item_bought.price * (item_bought.qty - 1))
-                    //     })
-                    // }
-
+                   
                 }}>-</span>
                 &nbsp;
 
@@ -80,13 +72,8 @@ export default function PurchaseItemBox({ itemY }) {
 
                 <span onClick={() => {
                     console.log("you click span plus")
-                    incrementItems(bagItem);
+                    incrementItems();
                     console.log("after incrementItems, bagItem", bagItem)
-
-                    // setItem_bought({
-                    //     ...item_bought, qty: item_bought.qty + 1,
-                    //     total: (item_bought.price * (item_bought.qty + 1))
-                    // })
 
                 }}>+</span>
                 <br />

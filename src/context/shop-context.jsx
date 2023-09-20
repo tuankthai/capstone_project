@@ -86,22 +86,54 @@ export const ShopContextProvider = (props) => {
             setCartTotal(getCartTotal())
         }
     }
-
+ 
     const getCartTotal = () => {
 
         let cartTotal = 0;
         cartItems.map((itemY) => {
             console.log("map itemY : ", itemY)
             cartTotal += itemY.total;
+            // cartTotal += itemY.qty*itemY.price;
 
         })
         return cartTotal;
     }
 
+    const saveToken = (token) => {
+        setToken(token)
+    }
+
+    const saveUsername = (username) => {
+        setUserName(username)
+    }
+
+    const clearToken = (token) => {
+        setToken("")
+    }
+
+    const clearUsername = (username) => {
+        setUserName("")
+    }
+
+    const persistCart = () => {
+        //if user did not place order, persist cart to localstorage 
+    }
+
+    const isTokenExist = () => {
+        console.log("token = ", token )
+        return token.length ? true : false 
+    }
+
+    const clearArray = () => {
+        
+        setCartItems([]);
+        
+    }
 
     const contextValue = {
         purchaseItem, cartItems, username, token, cartTotal,
-        addToCart, removeFromCart, updateCart, getCartTotal
+        addToCart, removeFromCart, updateCart, getCartTotal, saveToken, saveUsername, clearToken, clearUsername, 
+        isTokenExist, persistCart, clearArray
     };
 
     return <ShopContext.Provider value={contextValue}>

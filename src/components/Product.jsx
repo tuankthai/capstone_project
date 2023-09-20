@@ -56,23 +56,11 @@ export default function Product() {
                     <br />
                     {product.description}</h4>
                 <br />
-                {/* <h4>Ratings: {product.rating.rate} ({product.rating.count})</h4> */}
                 <h4>price: ${product.price}</h4>
                 <br />
                 <button className='product-button' onClick={
                     () => {
                         console.log("add to cart clicked");
-
-                        // setPurchaseItem(
-                        //     {
-                        //         id: product.id,
-                        //         title: product.title,
-                        //         price: product.price,
-                        //         image: product.image,
-                        //         qty: 1,
-                        //         total: parseFloat(product.price)
-                        //     }
-                        // );
 
                          const getItem =   {
                                 id: product.id,
@@ -82,14 +70,10 @@ export default function Product() {
                                 qty: 1,
                                 total: parseFloat(product.price)
                             }
-                        
-
-                        // navigate(`/Cart/${product.id}`)
-                        // console.log("before calling addToCart, purchaseItem : ", purchaseItem);
+                                                
                         console.log("before calling addToCart, getItem : ", getItem);
                         addToCart(getItem);
                         console.log("after calling addToCart, getItem : ", cartItems);
-
 
                     }}>
                     Add to Cart</button>
@@ -99,8 +83,6 @@ export default function Product() {
 
                 <button className='product-button' onClick={() => { navigate(`/`) }} >
                     Continue Shopping</button>
-
-
 
             </div>
         </div>
