@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Logout() {
-    const { clearToken, clearUsername, persistCart } = useContext(ShopContext);
+    const { clearToken, clearUsername, persistCart, clearCart } = useContext(ShopContext);
     const navigate = useNavigate();
 
     //if token exists, persists shopping cart to local storage if user did not check out
@@ -12,9 +12,12 @@ export default function Logout() {
     persistCart()
     clearToken()
     clearUsername()
-    useEffect(() => {
-        navigate(`/`);
-    }, [])
+    clearCart()
+    navigate(`/`);
+
+    // useEffect(() => {
+    //     navigate(`/`);
+    // }, [])
 
     return (
         <div>

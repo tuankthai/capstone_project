@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import '../App.css'
 import PurchaseItemBox from './PurchaseItemBox'
 import { ShopContext } from '../context/shop-context';
+import CheckOut from './CheckOut';
 
 // tips to do 2x decimal places
 // function financial(x) {
@@ -19,7 +20,7 @@ export default function Cart() {
     const [error, setError] = useState(null);
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
-    const { cartItems, cartTotal, getCartTotal } = useContext(ShopContext);
+    const { cartItems, cartTotal, getCartTotal, isTokenExist } = useContext(ShopContext);
     const orderTotal  = getCartTotal();
     // const orderTotal;
 
@@ -48,7 +49,9 @@ export default function Cart() {
 
             <div className='row_flex'>
                 <button className='product-button' onClick={() => {
-                    navigate(`/PreCheckout`)
+                    // {return isTokenExist() ? <CheckOut /> : <PreCheckout /> }
+                     isTokenExist() ? navigate(`/Checkout`) : navigate(`/PreCheckout`) 
+                    // navigate(`/PreCheckout`)
 
                 }} >
                     Check Out</button>

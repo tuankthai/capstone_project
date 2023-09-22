@@ -23,9 +23,10 @@ export default function Home() {
     const [allproducts, setAllproducts] = useState([])
     const [displayProducts, setDisplayProducts] = useState([])
     const navigate = useNavigate();
-    const { isTokenExist } = useContext(ShopContext);
+    const { isTokenExist, me } = useContext(ShopContext);
 
     console.log("in home page")
+    console.log(me)
 
 
     function filterSearchText(searchText) {
@@ -33,14 +34,14 @@ export default function Home() {
         setDisplayProducts(allproducts.filter(function (product) {
             //find product has text containing search text
             return product.title.includes(searchText)
-                |  product.description.includes(searchText)              
+                | product.description.includes(searchText)
         }));
 
     }
 
     function filterCategory(e, category) {
         console.log("in filterCategory, selected category = ", category)
-        
+
         setDisplayProducts(allproducts.filter(function (product) {
             //find product has the selected category
             return product.category === category
@@ -84,25 +85,26 @@ export default function Home() {
 
     // console.log("all categories = ", allCategories)
     // console.log("all products = ", allproducts)
-    console.log("all display products = ", displayProducts)
+    // console.log("all display products = ", displayProducts)
     // console.log("isTokenExist = ", isTokenExist())
+    console.log(displayProducts, "test is its sorting")
 
     return (
         <div>
             {isTokenExist() ? <NavLogout /> : <Nav />}
-
+            <hr />
             <div className='menuOption'>
                 <form action="">
 
-                <input value={search}
-                    onChange={(e) => {
-                        console.log(e.target.value)
-                        setSearch(e.target.value)
-                        filterSearchText(e.target.value);
-                    }}
-                    type="text" name="search" id="search"
-                    placeholder="search" required
-                /><br />
+                    <input value={search}
+                        onChange={(e) => {
+                            console.log(e.target.value)
+                            setSearch(e.target.value)
+                            filterSearchText(e.target.value);
+                        }}
+                        type="text" name="search" id="search"
+                        placeholder="search" required
+                    /><br />
                 </form>
 
                 {/* <div className='alignFilterDropDown'>
@@ -110,24 +112,23 @@ export default function Home() {
                 </div> */}
 
                 <div className='alignDropDown'>
-                    <DropDownMenu />
+                    <DropDownMenu setDisplayProducts={setDisplayProducts}  />
                 </div>
             </div>
 
-            <br />
+            {/* <br /> */}
             {/* <h1>Welcome to Macy's Store</h1> */}
             <div className="list-all-categories">
                 {allCategories.map((cat) => {
-                    console.log("map category: ", cat)
+                    // console.log("map category: ", cat)
                     return <b> < p onClick={(e) => { filterCategory(e, cat) }}> {cat}</p></b>
                 })}
             </div>
             <hr />
             <div className='list-all-products'>
                 {displayProducts.map((product) => {
-                    console.log("map product: ", product)
-                    return <ProductBox key={product._id} product={product}
-                    />;
+                    // console.log("map product: ", product)
+                    return <ProductBox key={product._id} product={product}/>;
 
                 })}
             </div>

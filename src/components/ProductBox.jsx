@@ -7,8 +7,8 @@ import Product from "./Product";
 
 export default function ProductBox({ product }) {
 
-    console.log("product box id: ", product.id)
-    console.log("product literal template: ", `/Product/${product.id}`)
+    // console.log("product box id: ", product.id)
+    // console.log("product literal template: ", `/Product/${product.id}`)
 
     return (
         <div className="productClass">

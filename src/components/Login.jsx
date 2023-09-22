@@ -18,7 +18,7 @@ export default function Login({ setToken }) {
     const [error, setError] = useState(null)
     const [errormsg, setErrormsg] = useState(null)
     const navigate = useNavigate();
-    const { saveToken, saveUsername } = useContext(ShopContext);
+    const { saveToken, saveUsername, retrieveCart } = useContext(ShopContext);
     let src = "";
 
     console.log("in Login")
@@ -64,6 +64,7 @@ export default function Login({ setToken }) {
             //save token in useContext  TO DO ....
             saveToken(result.token)
             saveUsername(username)
+            retrieveCart(username)
 
             //clear input form fields
             setUsername("")

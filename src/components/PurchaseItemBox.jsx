@@ -15,6 +15,7 @@ export default function PurchaseItemBox({ itemY }) {
             total: (bagItem.price * (bagItem.qty - 1))
         })
         updateCart(bagItem)
+        
 
         //if qty === 0 then remove item from bag and update state ... TO DO 
         if (bagItem.qty === 0) {
