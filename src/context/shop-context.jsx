@@ -91,19 +91,20 @@ export const ShopContextProvider = (props) => {
         setUserName2("")
     }
 
+    //tier two project.  code is not working yet .....TO DO
     const joinTwoCarts = (restoredCart) => {
 
         restoredCart.forEach((itemyy) => {
             // console.log(itemyy);
             //check to see if item already exists in currently used cart
             let idx = cartItems.findIndex((itemxx) => { return itemxx.id === itemyy.id });
-            (idx != -1) ? 
+            (idx != -1) ?
                 setCartItems(prev => [...prev, prev[idx].qty++]) :
                 setCartItems(prev => [...prev, itemyy])
         });
     }
 
-    console.log("after updating", cartItems)
+    // console.log("after updating", cartItems)
 
 
     const retrieveCart = (username) => {
@@ -111,11 +112,13 @@ export const ShopContextProvider = (props) => {
         //convert from json to js obj
         const restoredCart = JSON.parse(localStorage.getItem(`${username}`));
         console.log("restoredCart = ", restoredCart)
+        setCartItems(restoredCart)
 
-        restoredCart && (cartItems.length ?
-            joinTwoCarts(restoredCart)
-            :
-            setCartItems(restoredCart))
+        //tier two project .....TO DO
+        // restoredCart && (cartItems.length ?
+        //     joinTwoCarts(restoredCart)
+        //     :
+        //     setCartItems(restoredCart))
 
         //update # of items in cart on navbar ... TO DO
     }

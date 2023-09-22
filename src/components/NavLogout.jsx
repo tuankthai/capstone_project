@@ -16,12 +16,12 @@ export default function NavLogout() {
             <p>Macy's</p>
             {/* </Link> */}
 
-            <Link to="/Logout" >
-                <p className='loginlinks'> Logout</p>
+            <Link to="/Logout"  className='navbarlinks'>
+                <p > Logout</p>
             </Link>
 
-            <Link to="/Cart">
-                <p className='cartlinks'>Cart </p>
+            <Link to="/Cart" className='navbarlinks'>
+                <p >Cart </p>
             </Link>
 
 
