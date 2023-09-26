@@ -7,7 +7,7 @@ export const ShopContext = createContext(null);
 //localStorage.getItem('items')
 
 export const ShopContextProvider = (props) => {
-    const [me, setMe] = useState('Me')
+    // const [me, setMe] = useState('Me')
     const [purchaseItem, setPurchaseItem] = useState({});
     const [cartItems, setCartItems] = useState([]);
     const [username2, setUserName2] = useState("");
@@ -32,44 +32,13 @@ export const ShopContextProvider = (props) => {
 
     }
 
-    const removeFromCart = (bagItem) => {
-        console.log("in removeFromCart, bagItem : ", bagItem);
-
-        const item_found = cartItems.find((itemxx) => { return itemxx.id === bagItem.id });
-
-        const index = cartItems.indexOf(item_found);
-        if (index > -1) { // only splice array when item is found
-            cartItems.splice(index, 1); // 2nd parameter means remove one item only
-            setCartItems(cartItems); //update state
-        }
-
-    }
-
-    const updateCart = (bagItem) => {
-        console.log("in updateCart, bagItem : ", bagItem);
-
-        // let item_found = cartItems.find((itemxx, index) => { return itemxx.id === bagItem.id && index });
-        let item_found = cartItems.find((itemxx) => { return itemxx.id === bagItem.id });
-        if (item_found == null) {
-            console.log("item not found. impossible to happen!")
-        } else {
-            console.log("yes item found = ", item_found);
-            item_found.qty = bagItem.qty;
-            item_found.total = bagItem.total;
-            // item_found = { ...item_found, qty: bagItem.qty, total: bagItem.total };           
-            // setCartItems({ ...cartItems, cartItems[index]: bagItem })
-            setCartItems(cartItems)
-            setCartTotal(getCartTotal())
-        }
-    }
-
     const getCartTotal = () => {
 
         let cartTotal = 0;
         cartItems.map((itemY) => {
-            console.log("map itemY : ", itemY)
-            cartTotal += itemY.total;
-            // cartTotal += itemY.qty*itemY.price;
+            // console.log("map itemY : ", itemY)
+            // cartTotal += itemY.total;
+            cartTotal += itemY.qty*itemY.price;
 
         })
         return cartTotal;
@@ -108,19 +77,17 @@ export const ShopContextProvider = (props) => {
 
 
     const retrieveCart = (username) => {
-        //get cart from local storage
-        //convert from json to js obj
         const restoredCart = JSON.parse(localStorage.getItem(`${username}`));
         console.log("restoredCart = ", restoredCart)
-        setCartItems(restoredCart)
-
-        //tier two project .....TO DO
+        restoredCart !== null && setCartItems(restoredCart);
+        
+        //tier two project. merge current cart with local storage cart ...TO DO...
         // restoredCart && (cartItems.length ?
         //     joinTwoCarts(restoredCart)
         //     :
         //     setCartItems(restoredCart))
 
-        //update # of items in cart on navbar ... TO DO
+        //update # of items in cart on navbar ... TO DO...
     }
 
     const persistCart = () => {
@@ -146,8 +113,8 @@ export const ShopContextProvider = (props) => {
     }
 
     const contextValue = {
-        purchaseItem, cartItems, token, cartTotal, me, setCartItems,
-        addToCart, removeFromCart, updateCart, getCartTotal, saveToken, saveUsername, clearToken, clearUsername,
+        purchaseItem, cartItems, token, cartTotal, setCartItems,
+        addToCart, getCartTotal, saveToken, saveUsername, clearToken, clearUsername,
         isTokenExist, persistCart, clearCart, retrieveCart, clearCartInLocalStorage
     };
 

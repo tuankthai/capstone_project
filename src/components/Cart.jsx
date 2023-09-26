@@ -20,9 +20,9 @@ export default function Cart() {
     const [error, setError] = useState(null);
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
-    const { cartItems, isTokenExist, setCartItems } = useContext(ShopContext);
-    // const orderTotal = getCartTotal();
-    const orderTotal = 500;
+    const { cartItems, isTokenExist, setCartItems, getCartTotal } = useContext(ShopContext);
+    const orderTotal = getCartTotal();
+    // const orderTotal = 500;
 
     function renderItem(item) {
         const decrementItems = () => {
@@ -31,12 +31,12 @@ export default function Cart() {
                 const newState = [...cartItems];
                 newState[index] = {
                     ...newState[index],
-                    qty: item.qty - 1,                   
+                    qty: item.qty - 1,
                 }
                 //if qty becomes, remove from array
-                newState[index].qty === 0 && newState.splice(index, 1); 
+                newState[index].qty === 0 && newState.splice(index, 1);
                 setCartItems(newState);
-            }            
+            }
             //update cart grand total ....TO DO ....
         }
 
@@ -51,6 +51,11 @@ export default function Cart() {
                 }
                 setCartItems(newState);
             }
+        }
+
+        function itemSubTotal(item) {
+            let subtotal = item.price * item.qty;
+            return subtotal.toFixed(2);
         }
 
         return (
@@ -80,7 +85,7 @@ export default function Cart() {
                     }}>+</span><br />
                 </div>
                 <div className="subtotal_div">
-                    <h4> ${item.total}</h4><br />
+                    <h4> ${itemSubTotal(item)}</h4><br />
                 </div>
             </div >
         )
@@ -96,7 +101,6 @@ export default function Cart() {
                 {cartItems.map((itemY) => {
                     console.log("map itemY : ", itemY)
                     return renderItem(itemY);
-                    // return <PurchaseItemBox key={itemY.id} itemY={itemY}/>;
                 })}
             </div>
             <hr /><br />
