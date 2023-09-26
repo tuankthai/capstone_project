@@ -146,7 +146,7 @@ export const ShopContextProvider = (props) => {
     }
 
     const contextValue = {
-        purchaseItem, cartItems, token, cartTotal, me,
+        purchaseItem, cartItems, token, cartTotal, me, setCartItems,
         addToCart, removeFromCart, updateCart, getCartTotal, saveToken, saveUsername, clearToken, clearUsername,
         isTokenExist, persistCart, clearCart, retrieveCart, clearCartInLocalStorage
     };
