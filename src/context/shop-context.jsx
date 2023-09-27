@@ -5,6 +5,7 @@ export const ShopContext = createContext(null);
 //for references:
 //localStorage.setItem('items', JSON.stringify(items));
 //localStorage.getItem('items')
+//localStorage.removeItem('items')
 
 export const ShopContextProvider = (props) => {
     // const [me, setMe] = useState('Me')
@@ -12,8 +13,7 @@ export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
     const [username2, setUserName2] = useState("");
     const [token, setToken] = useState("");
-    // const [bagItem, setBagItem] = useState({});
-    const [cartTotal, setCartTotal] = useState(0);
+    // const [cartTotal, setCartTotal] = useState(0);
 
     const addToCart = (getItem) => {
         console.log("in addToCart, getItem : ", getItem);
@@ -25,10 +25,10 @@ export const ShopContextProvider = (props) => {
         } else {
             console.log("yes item found = ", item_found)
             item_found.qty += 1;
-            item_found.total += parseFloat(item_found.price);
+            // item_found.total += parseFloat(item_found.price);
         }
         setCartItems(cartItems)
-        setCartTotal(getCartTotal())
+        // setCartTotal(getCartTotal())
 
     }
 
@@ -37,7 +37,6 @@ export const ShopContextProvider = (props) => {
         let cartTotal = 0;
         cartItems.map((itemY) => {
             // console.log("map itemY : ", itemY)
-            // cartTotal += itemY.total;
             cartTotal += itemY.qty*itemY.price;
 
         })
@@ -72,9 +71,6 @@ export const ShopContextProvider = (props) => {
                 setCartItems(prev => [...prev, itemyy])
         });
     }
-
-    // console.log("after updating", cartItems)
-
 
     const retrieveCart = (username) => {
         const restoredCart = JSON.parse(localStorage.getItem(`${username}`));
@@ -113,7 +109,7 @@ export const ShopContextProvider = (props) => {
     }
 
     const contextValue = {
-        purchaseItem, cartItems, token, cartTotal, setCartItems,
+        purchaseItem, cartItems, token,  setCartItems,
         addToCart, getCartTotal, saveToken, saveUsername, clearToken, clearUsername,
         isTokenExist, persistCart, clearCart, retrieveCart, clearCartInLocalStorage
     };

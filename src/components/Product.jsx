@@ -6,7 +6,6 @@ import '../App.css'
 import Cart from './Cart'
 import { ShopContext } from '../context/shop-context';
 
-
 export default function Product() {
     const [product, setProduct] = useState({})
     const { productId } = useParams();
@@ -14,7 +13,6 @@ export default function Product() {
     const [errormsg, setErrormsg] = useState(null)
     const navigate = useNavigate();
     const { addToCart, purchaseItem, setPurchaseItem, cartItems } = useContext(ShopContext);
-
 
     console.log("useParams producId: ", productId);
 
@@ -32,13 +30,11 @@ export default function Product() {
                 console.error(error);
                 setError(error.message)
                 setErrormsg("Sorry. we have problems fetching the product ${productId}.")
-
             }
         }
         fetchproduct()
 
     }, [])
-
 
     return (
         <div className='productPage'>
@@ -61,20 +57,15 @@ export default function Product() {
                 <button className='product-button' onClick={
                     () => {
                         console.log("add to cart clicked");
-
                          const getItem =   {
                                 id: product.id,
                                 title: product.title,
                                 price: product.price,
                                 image: product.image,
-                                qty: 1,
-                                total: parseFloat(product.price)
-                            }
-                                                
+                                qty: 1
+                            }                                               
                         console.log("before calling addToCart, getItem : ", getItem);
                         addToCart(getItem);
-                        console.log("after calling addToCart, getItem : ", cartItems);
-
                     }}>
                     Add to Cart</button>
 

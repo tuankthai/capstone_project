@@ -16,13 +16,11 @@ import CheckOut from './CheckOut';
 
 export default function Cart() {
 
-    // const [orderTotal, setOrderTotal] = useState(0);
     const [error, setError] = useState(null);
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
     const { cartItems, isTokenExist, setCartItems, getCartTotal } = useContext(ShopContext);
     const orderTotal = getCartTotal();
-    // const orderTotal = 500;
 
     function renderItem(item) {
         const decrementItems = () => {
@@ -37,7 +35,6 @@ export default function Cart() {
                 newState[index].qty === 0 && newState.splice(index, 1);
                 setCartItems(newState);
             }
-            //update cart grand total ....TO DO ....
         }
 
         const incrementItems = () => {
@@ -47,7 +44,6 @@ export default function Cart() {
                 newState[index] = {
                     ...newState[index],
                     qty: item.qty + 1,
-                    //     total: (item.price * (item.qty + 1))
                 }
                 setCartItems(newState);
             }
@@ -73,7 +69,6 @@ export default function Cart() {
                     <span onClick={() => {
                         console.log("you click span minus")
                         decrementItems();
-                        console.log("after decrementItems, item", item)
                     }}>-</span>
                     &nbsp;
                     <h4> {item.qty}</h4><br />
@@ -81,7 +76,6 @@ export default function Cart() {
                     <span onClick={() => {
                         console.log("you click span plus")
                         incrementItems();
-                        console.log("after incrementItems, item", item)
                     }}>+</span><br />
                 </div>
                 <div className="subtotal_div">

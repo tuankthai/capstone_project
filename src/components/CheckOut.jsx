@@ -24,7 +24,8 @@ export default function CheckOut() {
     const [month, setMonth] = useState("")
     const navigate = useNavigate();
 
-    const { clearCart, clearCartInLocalStorage, isTokenExist } = useContext(ShopContext);
+    const { clearCart, clearCartInLocalStorage, isTokenExist, getCartTotal } = useContext(ShopContext);
+    const orderTotal = getCartTotal();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -220,9 +221,10 @@ export default function CheckOut() {
                     <div className="right_column">
                         <br />
                         {/* <h1>order total info</h1> */}
+                        {/* <h4>TOTAL: ${orderTotal.toFixed(2)}</h4> */}
                         <div>
                             <span className='label_text'>Subtotal:</span>
-                            <span className='price_text'>${subTotal}</span>
+                            <span className='price_text'>${orderTotal.toFixed(2)}</span>
                         </div>
                         <div>
                             <span className='label_text'>Shipping:</span>
