@@ -384,3 +384,13 @@ header {
   flex-direction: column;
   align-items: center;
 }
+
+.remove_item_div{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: flex-end; */
+    margin-top: 0%;
+    padding-top: 0%;
+    /* width:5%; */
+  
+}

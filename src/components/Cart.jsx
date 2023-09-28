@@ -49,6 +49,16 @@ export default function Cart() {
             }
         }
 
+        const handleRemove = () => {
+            const index = cartItems.findIndex(x => x.id === item.id);
+            if (index > -1) {
+                const newState = [...cartItems];
+                //remove from array
+                newState.splice(index, 1);
+                setCartItems(newState);
+            }  
+        }
+
         function itemSubTotal(item) {
             let subtotal = item.price * item.qty;
             return subtotal.toFixed(2);
@@ -80,6 +90,9 @@ export default function Cart() {
                 </div>
                 <div className="subtotal_div">
                     <h4> ${itemSubTotal(item)}</h4><br />
+                </div>
+                <div className='remove_item_div'>
+                    <button onClick={()=>{handleRemove()}}>remove</button>
                 </div>
             </div >
         )
