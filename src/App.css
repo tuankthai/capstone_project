@@ -1,47 +1,3 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
-
-
 #a {
   color: white;
   text-decoration: none;
@@ -62,23 +18,9 @@ header {
 
 #logo {
   color: white;
-  /* postion and left must work together */
-  /* position: relative;
-  /* left: -192px; */
-  /* left: -20em;  */
-
   text-decoration: none;
   font-size: 1.5em;
   padding: 0.5em;
-  /* color:aqua; */
-
-  /* font-weight: 200; */
-  /* font-size: 1.5em; */
-  /* font-family: sans-serif; */
-
-  /* margin: ; */
-  /* padding: 0.5rem 1.5rem 0 1.5rem; */
-  /* box-shadow: 0 0 20px 10px rgb(0, 0, 0, 0.2); */
 }
 
 #signup {
@@ -105,6 +47,7 @@ header {
   /* flex-wrap: wrap; */
   flex-direction: row;
   justify-content: space-evenly;
+  margin-top: 1.0em;
 }
 
 
@@ -123,13 +66,10 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  font-size: 0.0005px
 }
 
-/* body{
-  font-size: 0.5rem;
-  font-weight: 300;
-} */
+
 
 .productPage {
   display: flex;
@@ -221,23 +161,25 @@ header {
   display: flex;
   /* flex-direction: column; */
   /* justify-content: flex-end;*/
-    justify-content: space-evenly;
+  justify-content: space-evenly;
   /* align-items: center; */
   color: black;
-    margin-left: 20px;
-    font-size: 25px;
+  /* margin-left: 20px; */
+  margin-left: 2.0em;
+  margin-right: 7.0em;
+  font-size: 25px;
 }
 
 .navbarlinks {
   color: black;
   margin-right: 5em;
   text-decoration: none;
-    /* margin-right: 50px; */
+  /* margin-right: 50px; */
   /* display: flex; */
   /* align-items: center; */
 }
 
-.navbarlinks:hover{
+.navbarlinks:hover {
   color: black;
   margin-right: 5em;
   text-decoration: underline;
@@ -250,10 +192,10 @@ header {
 .pre_checkout_div {
   display: flex;
   /* flex-direction: row;*/
-    flex-direction: column;
+  flex-direction: column;
 }
 
-.header_div{
+.header_div {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -287,18 +229,18 @@ header {
   width: 50%;
 }
 
-.botttom_div{
+.botttom_div {
   display: flex;
   flex-direction: row;
 }
 
-.two_columns{
+.two_columns {
   display: flex;
   flex-direction: row;
 }
 
 
-.CityStateZip{
+.CityStateZip {
   display: flex;
   /* margin-right: 1em; */
   /* padding-right: 3em; */
@@ -312,33 +254,133 @@ header {
 
 }
 
-.left_column{
+.left_column {
   display: flex;
   flex-direction: column;
   width: 50%;
-  padding: 1em;
+  /* padding: 1em; */
+  margin-right: 2.5rem;
+  margin-left: 2.5em;
 }
 
-.right_column{
+.right_column {
   display: flex;
   flex-direction: column;
   width: 50%;
+  margin-left: 5.5em;
+  margin-right: 4.5em;
 }
 
-.label_text{
+.label_text {
   /* display: flex;
   flex-direction: row; */
   width: 50%;
   margin-left: 0%;
 }
 
-.price_text{
+.price_text {
   width: 50%;
   margin-left: 50%;
 }
 
-.list-all-categories{
+.list-all-categories {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  /* background-color: #198753; */
+  background-color: #e6e9eb;
+  /* color: white; */
+  margin-bottom: 1.0em;
+  margin-top: 0.5em;
+  padding-top: 1.0em;
+}
+
+.postline {
+  height: 3px;
+  /* background-color: darkgray; */
+  /* background-color: #198753; */
+  background-color: #e6e9eb;
+  width: 100%;
+  margin-top: 1em;
+  /* box-shadow: 0 2px 4px; */
+}
+
+.dollar_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.label_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.chKout_big_div {
+  margin-right: 2.5em;
+  margin-left: 2.0em;
+}
+
+#city {
+  width: 30%;
+  margin-right: 1.0em;
+}
+
+#state {
+  width: 30%;
+  margin-right: 1.0em;
+}
+
+#zip {
+  width: 30%;
+}
+
+#year {
+  width: 30%;
+  margin-right: 1.0em;
+}
+
+#month {
+  width: 30%;
+}
+
+#phone {
+  width: 30%;
+}
+
+#firstname {
+  width: 40%;
+}
+
+#lastname {
+  width: 40%;
+}
+
+#creditCardType {
+  width: 30%;
+}
+
+#cardNumber {
+  width: 60%;
+}
+
+.footer_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e6e9eb;
+  /* color: white; */
+  margin-bottom: 1.0em;
+  margin-top: 0.5em;
+  padding-top: 1.0em;
+  padding-bottom: 1.0em;
+}
+
+.thankyou_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

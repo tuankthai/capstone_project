@@ -7,10 +7,7 @@ import Nav from './Nav'
 import { useNavigate } from "react-router-dom";
 
 export default function CheckOut() {
-    const subTotal = 500;
-    const shipping_cost = 25;
-    const taxes = 50;
-    const order_total = 50;
+  
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")
     const [address, setAddress] = useState("")
@@ -26,6 +23,9 @@ export default function CheckOut() {
 
     const { clearCart, clearCartInLocalStorage, isTokenExist, getCartTotal } = useContext(ShopContext);
     const orderTotal = getCartTotal();
+    const shipping_cost = 25;
+    const taxes = orderTotal * 0.1;
+    const grandTotal = orderTotal + taxes + shipping_cost;
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -38,7 +38,7 @@ export default function CheckOut() {
     }
 
     return (
-        <div>
+        <div className="chKout_big_div">
             {isTokenExist() ? <NavLogout /> : <Nav />}
             <hr />
             <form onSubmit={handleSubmit}>
@@ -222,22 +222,41 @@ export default function CheckOut() {
                         <br />
                         {/* <h1>order total info</h1> */}
                         {/* <h4>TOTAL: ${orderTotal.toFixed(2)}</h4> */}
-                        <div>
-                            <span className='label_text'>Subtotal:</span>
-                            <span className='price_text'>${orderTotal.toFixed(2)}</span>
+                        <div className="row_flex">
+                            <div className="label_div">
+                                <span className='label_text'>Subtotal:</span>
+                            </div>
+                            <div className="dollar_div">
+                                <span >${orderTotal.toFixed(2)}</span>
+                            </div>
                         </div>
-                        <div>
-                            <span className='label_text'>Shipping:</span>
-                            <span className='price_text'>${shipping_cost}</span>
+                        {/* <div> */}
+                        <div className="row_flex">
+                            <div className="label_div">
+                                <span className='label_text'>Shipping:</span>
+                            </div>
+                            <div className="dollar_div">
+                                <span >${shipping_cost.toFixed(2)}</span>
+                            </div>
                         </div>
-                        <div>
-                            <span className='label_text'>Estimated Tax:</span>
-                            <span className='price_text'>${taxes}</span>
+                        <div className="row_flex">
+                            <div className="label_div">
+                                <span className='label_text'>Estimated Tax:</span>
+                            </div>
+                            <div className="dollar_div">
+                                {/* <span className='price_text'>${taxes.toFixed(2)}</span> */}
+                                <span >${taxes.toFixed(2)}</span>
+                            </div>
                         </div>
                         <hr />
-                        <div>
-                            <b><span className='label_text'>Order Total:</span></b>
-                            <b><span className='price_text'>${order_total}</span>   </b>
+                        <div className="row_flex">
+                            <div className="label_div">
+                                <b><span className='label_text'>Order Total:</span></b>
+                            </div>
+                            <div className="dollar_div">
+                                {/* <span className='price_text'>${grandTotal.toFixed(2)}</span> */}
+                                <span >${grandTotal.toFixed(2)}</span>
+                            </div>
                         </div>
                         <br /><br />
                         <button >Place Order</button>

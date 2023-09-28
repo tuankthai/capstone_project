@@ -15,11 +15,11 @@ export default function ProductBox({ product }) {
             <Link to={`/Product/${product.id}`}>
                 <img src={product.image} alt={product.title} width={100}  ></img>
             </Link>
-            <br />
-            <h4>{product.title}</h4>
-            <h4>price: ${product.price}</h4>
-            <h4>Rating: {product.rating.rate} ({product.rating.count})</h4>
-            <h4>Category: {product.category}</h4>
+            {/* <br /><br /><br /><br /> */}
+            <h6>{product.title}</h6>
+            <h6>price: ${product.price}</h6>
+            <h6>Rating: {product.rating.rate} ({product.rating.count})</h6>
+            <h6>Category: {product.category}</h6>
             <br />
             
         </div>

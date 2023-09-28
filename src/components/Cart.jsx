@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from "react";
 
 import '../App.css'
-import PurchaseItemBox from './PurchaseItemBox'
+// import PurchaseItemBox from './PurchaseItemBox'
 import { ShopContext } from '../context/shop-context';
 import CheckOut from './CheckOut';
 
@@ -102,7 +102,9 @@ export default function Cart() {
             <h4>TOTAL: ${orderTotal.toFixed(2)}</h4>
             <div className='row_flex'>
                 <button className='product-button' onClick={() => {
-                    isTokenExist() ? navigate(`/Checkout`) : navigate(`/PreCheckout`)
+                    //the following line is for tier two
+                    // isTokenExist() ? navigate(`/Checkout`) : navigate(`/PreCheckout`)
+                    navigate(`/Checkout`) 
                 }} >
                     Check Out</button>
                 <button className='product-button' onClick={() => {

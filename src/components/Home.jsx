@@ -4,8 +4,10 @@ import React from "react";
 import Nav from './Nav'
 import ProductBox from './ProductBox'
 import DropDownMenu from './DropDownMenu'
-import FilterDropDownMenu from './FilterDropDownMenu'
 import NavLogout from "./NavLogout";
+
+// import { Link } from "react-router-dom";
+// import Product from "./Product";
 
 import '../App.css'
 
@@ -23,11 +25,36 @@ export default function Home() {
     const [allproducts, setAllproducts] = useState([])
     const [displayProducts, setDisplayProducts] = useState([])
     const navigate = useNavigate();
-    const { isTokenExist, me } = useContext(ShopContext);
+    const { isTokenExist } = useContext(ShopContext);
 
     console.log("in home page")
-    console.log(me)
 
+    function handleDropDown(sortValue) {
+        // console.log("in handleDropDown, sortValue=", sortValue)
+        if (sortValue === "one") {
+            const sorted = displayProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+            console.log("sorted = ", sorted)
+            setDisplayProducts(sorted);
+
+            // setDisplayProducts(prev => {
+            //     let sorted = prev.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+            //     console.log("sorted = ", sorted)
+            //     return sorted
+            // })
+        } else {
+            const sorted = displayProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+            console.log("sorted = ", sorted)
+            setDisplayProducts(sorted);
+
+            // setSortedProducts(prev => {
+            //     let sorted = prev.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+            //     console.log("sorted = ", sorted)
+            //     return sorted
+            // })
+        }
+    }
+
+    // console.log("displayProducts = ", displayProducts)
 
     function filterSearchText(searchText) {
         console.log("in filterSearchText, searchText = ", searchText)
@@ -87,12 +114,13 @@ export default function Home() {
     // console.log("all products = ", allproducts)
     // console.log("all display products = ", displayProducts)
     // console.log("isTokenExist = ", isTokenExist())
-    console.log(displayProducts, "test is its sorting")
+    console.log("test sorting, ", displayProducts)
 
     return (
         <div>
             {isTokenExist() ? <NavLogout /> : <Nav />}
-            <hr />
+            {/* <hr /> */}
+            <div className="postline"></div>
             <div className='menuOption'>
                 <form action="">
 
@@ -107,32 +135,35 @@ export default function Home() {
                     /><br />
                 </form>
 
-                {/* <div className='alignFilterDropDown'>
-                    <FilterDropDownMenu />
-                </div> */}
-
                 <div className='alignDropDown'>
                     <DropDownMenu setDisplayProducts={setDisplayProducts}  />
                 </div>
+
+                {/* <label htmlFor="status"> <b>{"Sort   "}</b>
+                    <select id="sort" name="sort" required
+                        onChange={(e) => { handleDropDown(e.target.value) }}
+                    >
+                        <option value="one">Price low to high</option>
+                        <option value="two">Price high to low</option>
+                    </select>
+
+                </label> */}
             </div>
 
-            {/* <br /> */}
-            {/* <h1>Welcome to Macy's Store</h1> */}
             <div className="list-all-categories">
                 {allCategories.map((cat) => {
                     // console.log("map category: ", cat)
                     return <b> < p onClick={(e) => { filterCategory(e, cat) }}> {cat}</p></b>
                 })}
             </div>
-            <hr />
+            {/* <hr /> */}
             <div className='list-all-products'>
                 {displayProducts.map((product) => {
                     // console.log("map product: ", product)
-                    return <ProductBox key={product._id} product={product}/>;
+                    return <ProductBox key={product._id} product={product} />;
 
                 })}
             </div>
-
         </div>
     )
 }

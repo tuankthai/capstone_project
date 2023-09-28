@@ -8,7 +8,6 @@ function DropDownMenu({ setDisplayProducts }) {
         console.log(msg)
         if (msg=="one") {
             setDisplayProducts(prev => {
-                
                 let sorted = prev.sort((a, b) => a.price - b.price)
                 console.log(sorted)
                 return sorted
@@ -26,16 +25,12 @@ function DropDownMenu({ setDisplayProducts }) {
             //     return a.price -  b.price
             // }))
             
-            
             // setDisplayProducts(prev=>prev.sort(function (a,b) {
             //     console.log("sort price descending")
             //     // return parseFloat(b.price) - parseFloat(a.price)
             //     return b.price - a.price
             // }))
-            // setDisplayProducts(prev => {
-            //     let sorted = prev.sort((a, b) => b.price - a.price)
-            //     return sorted
-            // })
+            
         console.log('Testtttttt')
     }
 
@@ -49,7 +44,6 @@ function DropDownMenu({ setDisplayProducts }) {
             <Dropdown.Menu>
                 <Dropdown.Item onClick={(e) => handleDropDown("one")}>Price low to high</Dropdown.Item>
                 <Dropdown.Item onClick={(e) => handleDropDown("two")}>Price high to low</Dropdown.Item>
-                {/* <Dropdown.Item onClick={(e) => handleDropDown(e, "three")}>Customer Ratings high to low</Dropdown.Item> */}
             </Dropdown.Menu>
         </Dropdown>
     );

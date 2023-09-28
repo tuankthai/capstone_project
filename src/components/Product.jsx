@@ -46,13 +46,13 @@ export default function Product() {
             <div className='productSide'>
                 <br />
                 <br />
-                <h4>{product.title}</h4>
+                <h6>{product.title}</h6>
                 <br />
-                <h4>Product Description:
+                <h6>Product Description:
                     <br />
-                    {product.description}</h4>
+                    {product.description}</h6>
                 <br />
-                <h4>price: ${product.price}</h4>
+                <h6>price: ${product.price}</h6>
                 <br />
                 <button className='product-button' onClick={
                     () => {

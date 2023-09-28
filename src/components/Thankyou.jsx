@@ -5,22 +5,19 @@ import { useNavigate } from "react-router-dom";
 export default function Thankyou() {
     const navigate = useNavigate();
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        console.log("hello login handleSubmit")
+    async function handleDone(e) {
+        // e.preventDefault();
+        console.log("hello handleDone")
         navigate(`/`)
 
     }
 
     return (
-        <div className="header_div">
-            <form onSubmit={handleSubmit}>
-
+        <div className="thankyou_div">
             <h1>
                 Thank you for placing the order
-                </h1>
-                <button >Done</button>
-            </form>
+            </h1>
+            <button  onClick={(e) => { handleDone(e) }}>Done</button>
         </div>
     )
 }
