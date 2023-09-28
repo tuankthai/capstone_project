@@ -32,7 +32,7 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/" element={<Home />} />
           </Routes>
-          <footer className='footer_div'>@2023 Macys. All rights reserved. Macys.com, LLC.
+          <footer className='footer_div'>@2023 Yacys. All rights reserved. Yacys.com, LLC.
             1000 Hollywood Blvd, Los Angeles CA 90001.</footer>
         </BrowserRouter>
       </ShopContextProvider>

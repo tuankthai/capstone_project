@@ -17,7 +17,7 @@ export default function Thankyou() {
             <h1>
                 Thank you for placing the order
             </h1>
-            <button  onClick={(e) => { handleDone(e) }}>Done</button>
+            <button  onClick={(e) => { handleDone(e) }}>Home</button>
         </div>
     )
 }

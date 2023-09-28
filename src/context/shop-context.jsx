@@ -8,28 +8,27 @@ export const ShopContext = createContext(null);
 //localStorage.removeItem('items')
 
 export const ShopContextProvider = (props) => {
-    // const [me, setMe] = useState('Me')
-    const [purchaseItem, setPurchaseItem] = useState({});
     const [cartItems, setCartItems] = useState([]);
     const [username2, setUserName2] = useState("");
     const [token, setToken] = useState("");
-    // const [cartTotal, setCartTotal] = useState(0);
 
     const addToCart = (getItem) => {
         console.log("in addToCart, getItem : ", getItem);
 
-        const item_found = cartItems.find((itemxx) => { return itemxx.id === getItem.id });
-        if (item_found == null) {
+        const index = cartItems.findIndex(x => x.id === getItem.id);
+        if (index === -1) {
             console.log("item not found")
-            cartItems.push(getItem);
+            const newState = [...cartItems, getItem] 
+            setCartItems(newState)
         } else {
-            console.log("yes item found = ", item_found)
-            item_found.qty += 1;
-            // item_found.total += parseFloat(item_found.price);
+            console.log("item found")
+            const newState = [...cartItems];
+            newState[index] = {
+                ...newState[index],
+                qty: newState[index].qty + 1,
+            }
+            setCartItems(newState);
         }
-        setCartItems(cartItems)
-        // setCartTotal(getCartTotal())
-
     }
 
     const getCartTotal = () => {
@@ -109,7 +108,7 @@ export const ShopContextProvider = (props) => {
     }
 
     const contextValue = {
-        purchaseItem, cartItems, token,  setCartItems,
+        cartItems, token,  setCartItems,
         addToCart, getCartTotal, saveToken, saveUsername, clearToken, clearUsername,
         isTokenExist, persistCart, clearCart, retrieveCart, clearCartInLocalStorage
     };

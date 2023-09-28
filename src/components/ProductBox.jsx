@@ -17,7 +17,7 @@ export default function ProductBox({ product }) {
             </Link>
             {/* <br /><br /><br /><br /> */}
             <h6>{product.title}</h6>
-            <h6>price: ${product.price}</h6>
+            <h6>${product.price}</h6>
             <h6>Rating: {product.rating.rate} ({product.rating.count})</h6>
             <h6>Category: {product.category}</h6>
             <br />

@@ -7,7 +7,7 @@ export default function Nav() {
     return (
         <div className='navbar'>
 
-            <p>Macy's</p>
+            <p>Yacy's</p>
 
             <Link to="/Login?src=navbar" className='navbarlinks'>
                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">

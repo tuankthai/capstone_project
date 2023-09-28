@@ -92,7 +92,8 @@ export default function Cart() {
                     <h4> ${itemSubTotal(item)}</h4><br />
                 </div>
                 <div className='remove_item_div'>
-                    <button onClick={()=>{handleRemove()}}>remove</button>
+                    {/* <button onClick={()=>{handleRemove()}}>remove</button> */}
+                    <h4 onClick={() => { handleRemove() }}>Remove</h4>
                 </div>
             </div >
         )

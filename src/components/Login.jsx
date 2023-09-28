@@ -84,7 +84,7 @@ export default function Login({ setToken }) {
         <div className="login_page_div">
             {/* <Nav /> */}
             {/* <h3 id="form-h3">Macy's</h3><br></br> */}
-            <h3 >Macy's</h3><br></br>
+            <h3 >Yacy's</h3><br></br>
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username"> User Name </label><br />
