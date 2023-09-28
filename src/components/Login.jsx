@@ -2,7 +2,7 @@
 // import Nav from './Nav'
 
 import React from "react"
-import { useState , useContext} from "react"
+import { useState, useContext } from "react"
 import './Login.css'
 import { ShopContext } from '../context/shop-context';
 
@@ -10,6 +10,7 @@ const BASE_URL = "https://fakestoreapi.com";
 
 import { useNavigate } from "react-router-dom";
 // import Nav from './Nav'
+import NavNoLogin from './NavNoLogin'
 
 export default function Login({ setToken }) {
 
@@ -71,46 +72,54 @@ export default function Login({ setToken }) {
             setPassword("")
 
             // navigate(`/Profile?src=profile`);
-            src.includes("navbar") ? navigate(`/`) : navigate(`/Checkout`);            
+            src.includes("navbar") ? navigate(`/`) : navigate(`/Checkout`);
 
         } catch (error) {
             console.log("error: ", error)
             setError(error.message)
-            setErrormsg("Invalid username or passord.")
+            setErrormsg("Invalid username or password.")
         }
     }
 
     return (
-        <div className="login_page_div">
-            {/* <Nav /> */}
-            {/* <h3 id="form-h3">Macy's</h3><br></br> */}
-            <h3 >Yacy's</h3><br></br>
+        <div>
+            <NavNoLogin />
+            <div className="postline"></div> 
+            
+            <div className="login_page_div">
+                {/* <h3 id="form-h3">Macy's</h3><br></br> */}
+                {/* <h3 >Yacy's</h3><br /><br /> */}
+                <h3 >Sign In</h3><br></br>
 
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username"> User Name </label><br />
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="username"> User Name </label><br />
 
-                <input value={username}
-                    onChange={(e) => {
+                    <input value={username}
+                        onChange={(e) => {
+                            console.log(e.target.value)
+                            setUsername(e.target.value)
+                        }}
+                        type="text" name="username" id="username"
+                        placeholder="username" required
+                    />
+                    <br /><br />
+
+                    <label htmlFor="password"> Password </label><br />
+                    <input value={password} onChange={(e) => {
                         console.log(e.target.value)
-                        setUsername(e.target.value)
+                        setPassword(e.target.value)
                     }}
-                    type="text" name="username" id="username"
-                    placeholder="username" required
-                />
-                <br /><br />
+                        type="password" name="password" id="password" placeholder="password" required
+                    />
+                    <br /><br /><br />
 
-                <label htmlFor="password"> Password </label><br />
-                <input value={password} onChange={(e) => {
-                    console.log(e.target.value)
-                    setPassword(e.target.value)
-                }}
-                    type="password" name="password" id="password" placeholder="password" required
-                />
-                <br /><br />
-                <button >Login</button>
-            </form>
-
-            <h4>{errormsg}</h4>
+                    <div className="login_page_button">
+                        <button id="login_button">Login</button>
+                    </div>
+                </form>
+                <br />
+                <h5>{errormsg}</h5>
+            </div>
         </div>
     )
 }

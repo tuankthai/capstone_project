@@ -229,6 +229,21 @@ header {
   width: 50%;
 }
 
+.login_page_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#login_button {
+  width: 100%;
+  height: 2.2em;
+  margin: 0;
+  padding: 1.2px 2px 1.2px 2px;
+  border: 2px 2px 2px 2px;
+  /* box-sizing: border-box; */
+}
+
 .botttom_div {
   display: flex;
   flex-direction: row;
@@ -368,15 +383,31 @@ header {
 }
 
 .footer_div {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #e6e9eb;
+  align-items: center; */
   /* color: white; */
-  margin-bottom: 1.0em;
   margin-top: 0.5em;
   padding-top: 1.0em;
   padding-bottom: 1.0em;
+  /* css below makes footer sticky or fixed at bottom of page */
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #e6e9eb;
+  text-align: center;
+  }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* background-color: red; */
+  /* color: white; */
+  background-color: #e6e9eb;
+  text-align: center;
 }
 
 .thankyou_div {
@@ -387,27 +418,27 @@ header {
   margin-top: 2em;
 }
 
-.remove_item_div{
-    /* display: flex; 
+.remove_item_div {
+  /* display: flex; 
     flex-direction: column;
     align-items: flex-start; */
-    /* justify-content: flex-end; */
-    margin-left: 2em;
-    padding-top: 0%; 
-    /* width:5%; */
-  
+  /* justify-content: flex-end; */
+  margin-left: 2em;
+  padding-top: 0%;
+  /* width:5%; */
+
 }
 
-.filler_div{
-      height: 10vh;
-      /* height: 70%; */
-      /* background-color: darkgray; */
-      /* background-color: #155e7c; */
-      width: 100%;
-      /* margin-top: 1em; */
-      /* box-shadow: 0 2px 4px; */
+.filler_div {
+  height: 10vh;
+  /* height: 70%; */
+  /* background-color: darkgray; */
+  /* background-color: #155e7c; */
+  width: 100%;
+  /* margin-top: 1em; */
+  /* box-shadow: 0 2px 4px; */
 }
 
-.note_div{
+.note_div {
   margin-top: 2em;
 }

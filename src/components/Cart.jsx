@@ -21,7 +21,7 @@ export default function Cart() {
     const [error, setError] = useState(null);
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
-    const { cartItems, isTokenExist, setCartItems, getCartTotal } = useContext(ShopContext);
+    const { cartItems, isTokenExist, setCartItems, getCartTotal, setItemsCount } = useContext(ShopContext);
     const orderTotal = getCartTotal();
 
     function renderItem(item) {
@@ -33,9 +33,11 @@ export default function Cart() {
                     ...newState[index],
                     qty: item.qty - 1,
                 }
-                //if qty becomes, remove from array
+                //if qty becomes zero, remove from array
                 newState[index].qty === 0 && newState.splice(index, 1);
                 setCartItems(newState);
+                setItemsCount(prev=>prev-1)
+
             }
         }
 
@@ -48,6 +50,7 @@ export default function Cart() {
                     qty: item.qty + 1,
                 }
                 setCartItems(newState);
+                setItemsCount(prev => prev + 1)
             }
         }
 
@@ -55,6 +58,8 @@ export default function Cart() {
             const index = cartItems.findIndex(x => x.id === item.id);
             if (index > -1) {
                 const newState = [...cartItems];
+                //update cart items count
+                setItemsCount(prev => prev - newState[index].qty)
                 //remove from array
                 newState.splice(index, 1);
                 setCartItems(newState);
@@ -103,8 +108,8 @@ export default function Cart() {
     console.log("in cart, cartItems = ", cartItems)
     return (
         <div>
-            {/* {isTokenExist() ? <NavLogout /> : <Nav />}
-            <div className="postline"></div> */}
+            {isTokenExist() ? <NavLogout /> : <Nav />}
+            <div className="postline"></div> 
 
             <div className='Cart'>
                 <br />

@@ -11,6 +11,7 @@ export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
     const [username2, setUserName2] = useState("");
     const [token, setToken] = useState("");
+    const [itemsCount, setItemsCount] = useState(0);
 
     const addToCart = (getItem) => {
         console.log("in addToCart, getItem : ", getItem);
@@ -29,6 +30,7 @@ export const ShopContextProvider = (props) => {
             }
             setCartItems(newState);
         }
+        setItemsCount(prev=>prev+1)
     }
 
     const getCartTotal = () => {
@@ -74,8 +76,19 @@ export const ShopContextProvider = (props) => {
     const retrieveCart = (username) => {
         const restoredCart = JSON.parse(localStorage.getItem(`${username}`));
         console.log("restoredCart = ", restoredCart)
-        restoredCart !== null && setCartItems(restoredCart);
-        
+        // restoredCart !== null && setCartItems(restoredCart);
+
+        if (restoredCart !== null) {
+            setCartItems(restoredCart);
+            //update cart items count
+            let totalCnt = 0;
+            restoredCart.forEach((item) => {
+                console.log("qty, totalcnt = ", item.qty, totalCnt)
+                totalCnt += item.qty
+            });
+            setItemsCount(totalCnt)
+        }
+
         //tier two project. merge current cart with local storage cart ...TO DO...
         // restoredCart && (cartItems.length ?
         //     joinTwoCarts(restoredCart)
@@ -99,6 +112,7 @@ export const ShopContextProvider = (props) => {
     const clearCart = () => {
 
         setCartItems([]);
+        setItemsCount(0)
 
     }
 
@@ -108,7 +122,7 @@ export const ShopContextProvider = (props) => {
     }
 
     const contextValue = {
-        cartItems, token,  setCartItems,
+        cartItems, token, setCartItems, setItemsCount, itemsCount,
         addToCart, getCartTotal, saveToken, saveUsername, clearToken, clearUsername,
         isTokenExist, persistCart, clearCart, retrieveCart, clearCartInLocalStorage
     };
