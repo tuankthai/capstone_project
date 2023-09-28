@@ -103,8 +103,9 @@ header {
   display: flex;
   flex-direction: column;
   width: 25em;
-  padding: 1.5em;
-}
+  /* padding: 1.5em; */
+  padding: 0.5em;
+  }
 
 .row_flex {
   display: flex;
@@ -155,8 +156,10 @@ header {
 
 .navbar {
   width: 100%;
-  height: 50px;
-  /* height: 80px; */
+  /* height: 50px; */
+  height: 30px;
+  /* font-size: 25px; */
+  font-size: 20px;
   /* background-color: black; */
   display: flex;
   /* flex-direction: column; */
@@ -167,7 +170,6 @@ header {
   /* margin-left: 20px; */
   margin-left: 2.0em;
   margin-right: 7.0em;
-  font-size: 25px;
 }
 
 .navbarlinks {
@@ -385,13 +387,14 @@ header {
 .footer_div {
   /* display: flex;
   flex-direction: column;
-  align-items: center; */
-  /* color: white; */
+  align-items: center;  */
+  /* color: white;
   margin-top: 0.5em;
   padding-top: 1.0em;
   padding-bottom: 1.0em;
   /* css below makes footer sticky or fixed at bottom of page */
   position: fixed;
+  /* position:sticky; */
   left: 0;
   bottom: 0;
   width: 100%;

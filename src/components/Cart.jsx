@@ -74,13 +74,13 @@ export default function Cart() {
         return (
             <div className='row_flex'>
                 <div className="image_div">
-                    <img src={item.image} alt={""} width={100} height={100}></img><br />
+                    <img src={item.image} alt={""} width={60} height={40}></img><br />
                 </div>
                 <div className="title_div">
-                    <h4>{item.title}</h4><br />
+                    <h6>{item.title}</h6><br />
                 </div>
                 <div className="price_div">
-                    <h4> ${item.price}</h4><br />
+                    <h6> ${item.price}</h6><br />
                 </div>
                 <div className="qty_div">
                     <span onClick={() => {
@@ -88,7 +88,7 @@ export default function Cart() {
                         decrementItems();
                     }}>-</span>
                     &nbsp;
-                    <h4> {item.qty}</h4><br />
+                    <h6> {item.qty}</h6><br />
                     &nbsp;
                     <span onClick={() => {
                         console.log("you click span plus")
@@ -96,10 +96,10 @@ export default function Cart() {
                     }}>+</span><br />
                 </div>
                 <div className="subtotal_div">
-                    <h4> ${itemSubTotal(item)}</h4><br />
+                    <h6> ${itemSubTotal(item)}</h6><br />
                 </div>
                 <div className='remove_item_div'>
-                    <h4 onClick={() => { handleRemove() }}>Remove</h4>
+                    <h6 onClick={() => { handleRemove() }}>Remove</h6>
                 </div>
             </div >
         )
@@ -113,7 +113,7 @@ export default function Cart() {
 
             <div className='Cart'>
                 <br />
-                <h3>SHOPPING BAG </h3><br />
+                <h6>Shopping Bag </h6>
                 <hr />
                 {/* loop through the array and display products and qty bought */}
                 <div className='column_flex'>
@@ -122,9 +122,9 @@ export default function Cart() {
                         return renderItem(itemY);
                     })}
                 </div>
-                <hr /><br />
+                <hr />
 
-                <h4>TOTAL: ${orderTotal.toFixed(2)}</h4>
+                <h6>Total: ${orderTotal.toFixed(2)}</h6>
                 <div className='row_flex'>
                     <button className='product-button' onClick={() => {
                         //the following line is for tier two

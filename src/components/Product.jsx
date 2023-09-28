@@ -48,18 +48,18 @@ export default function Product() {
 
             <div className='productImage'>
                 <br />
-                <br />
+                {/* <br /> */}
                 <img src={product.image} alt={product.title} width={300} height={300}></img>
             </div>
             <div className='productSide'>
-                <br />
-                <br />
+                {/* <br /> */}
+                {/* <br /> */}
                 <h6>{product.title}</h6>
-                <br />
+                {/* <br /> */}
                 <h6> {product.description}</h6>
-                <br />
+                {/* <br /> */}
                 <h6> ${product.price}</h6>
-                <br />
+                {/* <br /> */}
                 <button className='product-button' onClick={
                     () => {
                         console.log("add to cart clicked");
