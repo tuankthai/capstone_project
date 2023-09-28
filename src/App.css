@@ -383,6 +383,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 60vh;
+  margin-top: 2em;
 }
 
 .remove_item_div{
@@ -394,4 +396,18 @@ header {
     padding-top: 0%; 
     /* width:5%; */
   
+}
+
+.filler_div{
+      height: 10vh;
+      /* height: 70%; */
+      /* background-color: darkgray; */
+      /* background-color: #155e7c; */
+      width: 100%;
+      /* margin-top: 1em; */
+      /* box-shadow: 0 2px 4px; */
+}
+
+.note_div{
+  margin-top: 2em;
 }

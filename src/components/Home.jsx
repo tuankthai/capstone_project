@@ -131,7 +131,7 @@ export default function Home() {
                             filterSearchText(e.target.value);
                         }}
                         type="text" name="search" id="search"
-                        placeholder="search" required
+                        placeholder="search product ..." required
                     /><br />
                 </form>
 

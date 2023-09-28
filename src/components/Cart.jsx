@@ -6,6 +6,8 @@ import '../App.css'
 // import PurchaseItemBox from './PurchaseItemBox'
 import { ShopContext } from '../context/shop-context';
 import CheckOut from './CheckOut';
+import NavLogout from "./NavLogout";
+import Nav from "./Nav";
 
 // tips to do 2x decimal places
 // function financial(x) {
@@ -56,7 +58,7 @@ export default function Cart() {
                 //remove from array
                 newState.splice(index, 1);
                 setCartItems(newState);
-            }  
+            }
         }
 
         function itemSubTotal(item) {
@@ -92,7 +94,6 @@ export default function Cart() {
                     <h4> ${itemSubTotal(item)}</h4><br />
                 </div>
                 <div className='remove_item_div'>
-                    {/* <button onClick={()=>{handleRemove()}}>remove</button> */}
                     <h4 onClick={() => { handleRemove() }}>Remove</h4>
                 </div>
             </div >
@@ -101,32 +102,38 @@ export default function Cart() {
 
     console.log("in cart, cartItems = ", cartItems)
     return (
-        <div className='Cart'>
-            <h3>SHOPPING BAG </h3><br />
-            <hr />
-            {/* loop through the array and display products and qty bought */}
-            <div className='column_flex'>
-                {cartItems.map((itemY) => {
-                    console.log("map itemY : ", itemY)
-                    return renderItem(itemY);
-                })}
-            </div>
-            <hr /><br />
+        <div>
+            {/* {isTokenExist() ? <NavLogout /> : <Nav />}
+            <div className="postline"></div> */}
 
-            <h4>TOTAL: ${orderTotal.toFixed(2)}</h4>
-            <div className='row_flex'>
-                <button className='product-button' onClick={() => {
-                    //the following line is for tier two
-                    // isTokenExist() ? navigate(`/Checkout`) : navigate(`/PreCheckout`)
-                    navigate(`/Checkout`) 
-                }} >
-                    Check Out</button>
-                <button className='product-button' onClick={() => {
-                    navigate(`/`)
-                }} >
-                    Continue Shopping</button>
-            </div>
+            <div className='Cart'>
+                <br />
+                <h3>SHOPPING BAG </h3><br />
+                <hr />
+                {/* loop through the array and display products and qty bought */}
+                <div className='column_flex'>
+                    {cartItems.map((itemY) => {
+                        console.log("map itemY : ", itemY)
+                        return renderItem(itemY);
+                    })}
+                </div>
+                <hr /><br />
 
+                <h4>TOTAL: ${orderTotal.toFixed(2)}</h4>
+                <div className='row_flex'>
+                    <button className='product-button' onClick={() => {
+                        //the following line is for tier two
+                        // isTokenExist() ? navigate(`/Checkout`) : navigate(`/PreCheckout`)
+                        navigate(`/Checkout`)
+                    }} >
+                        Check Out</button>
+                    <button className='product-button' onClick={() => {
+                        navigate(`/`)
+                    }} >
+                        Continue Shopping</button>
+                </div>
+
+            </div>
         </div>
     )
 

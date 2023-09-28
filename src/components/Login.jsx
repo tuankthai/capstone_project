@@ -104,7 +104,7 @@ export default function Login({ setToken }) {
                     console.log(e.target.value)
                     setPassword(e.target.value)
                 }}
-                    type="text" name="password" id="password" placeholder="password" required
+                    type="password" name="password" id="password" placeholder="password" required
                 />
                 <br /><br />
                 <button >Login</button>

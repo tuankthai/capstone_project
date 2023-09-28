@@ -5,6 +5,9 @@ const BASE_URL = "https://fakestoreapi.com";
 import '../App.css'
 import Cart from './Cart'
 import { ShopContext } from '../context/shop-context';
+import NavLogout from "./NavLogout";
+import Nav from "./Nav";
+
 
 export default function Product() {
     const [product, setProduct] = useState({})
@@ -12,7 +15,7 @@ export default function Product() {
     const [error, setError] = useState(null)
     const [errormsg, setErrormsg] = useState(null)
     const navigate = useNavigate();
-    const { addToCart, purchaseItem, setPurchaseItem, cartItems } = useContext(ShopContext);
+    const { addToCart, cartItems, isTokenExist } = useContext(ShopContext);
 
     console.log("useParams producId: ", productId);
 
@@ -37,7 +40,12 @@ export default function Product() {
     }, [])
 
     return (
+        <div>
+            {isTokenExist() ? <NavLogout /> : <Nav />}
+            <div className="postline"></div>
+
         <div className='productPage'>
+
             <div className='productImage'>
                 <br />
                 <br />
@@ -67,13 +75,11 @@ export default function Product() {
                     }}>
                     Add to Cart</button>
 
-                <button className='product-button' onClick={() => { navigate(`/Cart`) }}>
-                    View Cart</button>
-
                 <button className='product-button' onClick={() => { navigate(`/`) }} >
                     Continue Shopping</button>
 
             </div>
+        </div>
         </div>
     )
 }

@@ -38,9 +38,10 @@ export default function CheckOut() {
     }
 
     return (
-        <div className="chKout_big_div">
+        <div>
             {isTokenExist() ? <NavLogout /> : <Nav />}
-            <hr />
+            <div className="postline"></div> 
+        <div className="chKout_big_div">
             <form onSubmit={handleSubmit}>
                 <div className="two_columns">
 
@@ -266,6 +267,7 @@ export default function CheckOut() {
                 </div>
             </form>
 
+        </div>
         </div>
     )
 }
