@@ -117,7 +117,7 @@ export default function Home() {
     console.log("test sorting, ", displayProducts)
 
     return (
-        <div>
+        <div className="home-page-div">
             {isTokenExist() ? <NavLogout /> : <Nav />}
             {/* <hr /> */}
             <div className="postline"></div>
@@ -153,7 +153,7 @@ export default function Home() {
             <div className="list-all-categories">
                 {allCategories.map((cat) => {
                     // console.log("map category: ", cat)
-                    return <b> < p onClick={(e) => { filterCategory(e, cat) }}> {cat}</p></b>
+                    return <b> < p onClick={(e) => { filterCategory(e, cat) }} className="cat-cursor"> {cat}</p></b>
                 })}
             </div>
             {/* <hr /> */}

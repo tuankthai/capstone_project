@@ -38,7 +38,7 @@ export default function CheckOut() {
     }
 
     return (
-        <div>
+        <div className="checkout-page-div">
             {isTokenExist() ? <NavLogout /> : <Nav />}
             <div className="postline"></div>
             <div className="chKout_big_div">

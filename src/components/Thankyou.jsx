@@ -18,7 +18,7 @@ export default function Thankyou() {
     }
 
     return (
-        <div>
+        <div className='thankyou-page-div'>
             {isTokenExist() ? <NavLogout /> : <Nav />}
             <div className="postline"></div>
 
