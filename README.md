@@ -18,6 +18,10 @@ It does not use tailwind, or bootstrap framework yet.
 
 It does not handle responsive design yet.
 
+## UPGRADE VERSION
+
+this is a new branch upgrade. 
+
 ## Installation and run the project.
 
 1.    run the project from local machine.
