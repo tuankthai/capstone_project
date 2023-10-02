@@ -260,7 +260,9 @@ export default function CheckOut() {
                                 </div>
                             </div>
                             <br /><br />
-                            <button >Place Order</button>
+                            <div className="place-order-div">
+                                <button className="product-button">Place Order</button>
+                            </div>
 
                         </div>
 

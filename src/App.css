@@ -474,18 +474,42 @@ header {
   cursor: pointer;
 }
 
-.remove-pointer{
+.remove-pointer {
   cursor: pointer;
 }
 
-.cart-page-div{
+.cart-page-div {
   margin-bottom: 3em;
 }
 
-.checkout-page-div{
+.checkout-page-div {
   margin-bottom: 3em;
 }
 
-.thankyou-page-div{
+.thankyou-page-div {
   margin-bottom: 3em;
-  }
+}
+
+.place-order-div {
+  display: flex;
+  justify-content: center;
+}
+
+.empty-filler-div{
+  width:2em;
+
+}
+
+.login-button {
+  padding: 0 3em;
+  /* margin: 0.5em 0; */
+  /* margin: 0.5em 0; */
+  /* border-radius: 0.5em; */
+  /* color: white; */
+  /* background-color: black; */
+  font-style: italic;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  /* background-color: antiquewhite */
+  width: 11em;
+  height: 2em;
+}

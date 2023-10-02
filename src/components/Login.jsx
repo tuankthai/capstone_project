@@ -11,6 +11,7 @@ const BASE_URL = "https://fakestoreapi.com";
 import { useNavigate } from "react-router-dom";
 // import Nav from './Nav'
 import NavNoLogin from './NavNoLogin'
+import '../App.css'
 
 export default function Login({ setToken }) {
 
@@ -114,6 +115,7 @@ export default function Login({ setToken }) {
                     <br /><br /><br />
 
                     <div className="login_page_button">
+                        {/* <button className="login-button">Login</button> */}
                         <button id="login_button">Login</button>
                     </div>
                 </form>

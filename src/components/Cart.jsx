@@ -134,6 +134,7 @@ export default function Cart() {
                         navigate(`/Checkout`)
                     }} >
                         Check Out</button>
+                    <div className='empty-filler-div'></div>
                     <button className='product-button' onClick={() => {
                         navigate(`/`)
                     }} >
