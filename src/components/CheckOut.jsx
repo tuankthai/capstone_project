@@ -38,7 +38,7 @@ export default function CheckOut() {
     }
 
     return (
-        <div>
+        <div className="checkout-page-div">
             {isTokenExist() ? <NavLogout /> : <Nav />}
             <div className="postline"></div>
             <div className="chKout_big_div">
@@ -260,7 +260,9 @@ export default function CheckOut() {
                                 </div>
                             </div>
                             <br /><br />
-                            <button >Place Order</button>
+                            <div className="place-order-div">
+                                <button className="product-button">Place Order</button>
+                            </div>
 
                         </div>
 

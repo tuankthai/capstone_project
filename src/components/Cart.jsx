@@ -58,8 +58,10 @@ export default function Cart() {
             const index = cartItems.findIndex(x => x.id === item.id);
             if (index > -1) {
                 const newState = [...cartItems];
+                console.log("newState[index].qty=", newState[index].qty)
                 //update cart items count
-                setItemsCount(prev => prev - newState[index].qty)
+                const quantity = newState[index].qty;
+                setItemsCount(prev => prev - quantity )
                 //remove from array
                 newState.splice(index, 1);
                 setCartItems(newState);
@@ -83,14 +85,14 @@ export default function Cart() {
                     <h6> ${item.price}</h6><br />
                 </div>
                 <div className="qty_div">
-                    <span onClick={() => {
+                    <span className='plus-minus' onClick={() => {
                         console.log("you click span minus")
                         decrementItems();
                     }}>-</span>
                     &nbsp;
                     <h6> {item.qty}</h6><br />
                     &nbsp;
-                    <span onClick={() => {
+                    <span className='plus-minus' onClick={() => {
                         console.log("you click span plus")
                         incrementItems();
                     }}>+</span><br />
@@ -99,7 +101,7 @@ export default function Cart() {
                     <h6> ${itemSubTotal(item)}</h6><br />
                 </div>
                 <div className='remove_item_div'>
-                    <h6 onClick={() => { handleRemove() }}>Remove</h6>
+                    <h6 className='remove-pointer' onClick={() => { handleRemove() }}>Remove</h6>
                 </div>
             </div >
         )
@@ -107,7 +109,7 @@ export default function Cart() {
 
     console.log("in cart, cartItems = ", cartItems)
     return (
-        <div>
+        <div className='cart-page-div'>
             {isTokenExist() ? <NavLogout /> : <Nav />}
             <div className="postline"></div> 
 
@@ -132,6 +134,7 @@ export default function Cart() {
                         navigate(`/Checkout`)
                     }} >
                         Check Out</button>
+                    <div className='empty-filler-div'></div>
                     <button className='product-button' onClick={() => {
                         navigate(`/`)
                     }} >

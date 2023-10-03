@@ -18,7 +18,7 @@ export default function Thankyou() {
     }
 
     return (
-        <div>
+        <div className='thankyou-page-div'>
             {isTokenExist() ? <NavLogout /> : <Nav />}
             <div className="postline"></div>
 
@@ -29,7 +29,7 @@ export default function Thankyou() {
                 {/* <div className='note_div'> */}
                 <h6>  Thank you for placing the order with Yacy's</h6>
                 {/* </div> */}
-                <button onClick={(e) => { handleDone(e) }}>Continue Shopping</button>
+                <button className='product-button' onClick={(e) => { handleDone(e) }}>Continue Shopping</button>
                 <div className='filler_div'></div>
             </div>
             <br /><br /><br />

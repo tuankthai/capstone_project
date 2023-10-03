@@ -40,7 +40,7 @@ export default function Product() {
     }, [])
 
     return (
-        <div>
+        <div className='product-page-div'>
             {isTokenExist() ? <NavLogout /> : <Nav />}
             <div className="postline"></div>
 
@@ -52,7 +52,7 @@ export default function Product() {
                 <img src={product.image} alt={product.title} width={300} height={300}></img>
             </div>
             <div className='productSide'>
-                {/* <br /> */}
+                <br />
                 {/* <br /> */}
                 <h6>{product.title}</h6>
                 {/* <br /> */}

@@ -87,6 +87,8 @@ export const ShopContextProvider = (props) => {
                 totalCnt += item.qty
             });
             setItemsCount(totalCnt)
+            //now delete local storage cart
+            localStorage.removeItem(`${username}`);
         }
 
         //tier two project. merge current cart with local storage cart ...TO DO...
