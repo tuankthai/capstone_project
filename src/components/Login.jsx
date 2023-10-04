@@ -92,10 +92,11 @@ export default function Login({ setToken }) {
                 {/* <h3 >Yacy's</h3><br /><br /> */}
                 <h3 >Sign In</h3><br></br>
 
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="username"> User Name </label><br />
+                <form className="login_form" onSubmit={handleSubmit}>
+                    <label htmlFor="username"> User Name </label>
+                    {/* <br /> */}
 
-                    <input value={username}
+                    <input className="login_input" value={username}
                         onChange={(e) => {
                             console.log(e.target.value)
                             setUsername(e.target.value)
@@ -103,16 +104,18 @@ export default function Login({ setToken }) {
                         type="text" name="username" id="username"
                         placeholder="username" required
                     />
-                    <br /><br />
+                    {/* <br /><br /> */}
 
-                    <label htmlFor="password"> Password </label><br />
-                    <input value={password} onChange={(e) => {
+                    <label htmlFor="password"> Password </label>
+                    {/* <br /> */}
+                    <input className="login_input" value={password} onChange={(e) => {
                         console.log(e.target.value)
                         setPassword(e.target.value)
                     }}
                         type="password" name="password" id="password" placeholder="password" required
                     />
-                    <br /><br /><br />
+                    {/* <br /><br /> */}
+                    {/* <br /> */}
 
                     <div className="login_page_button">
                         {/* <button className="login-button">Login</button> */}
